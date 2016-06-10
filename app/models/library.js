@@ -6,5 +6,7 @@ export default Model.extend({
   address: attr('string'),
   phone: attr('string'), 
   
+  books: hasMany('books'), 
+  
   isValid: Ember.computed.notEmpty('name')
 });
