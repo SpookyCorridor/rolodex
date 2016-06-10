@@ -5,6 +5,7 @@
 		<tr>
 			<th>ID</th>
 			<th>E-mail</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -13,7 +14,14 @@
 			<tr>
 				<th>{{invitation.id}}</th>
 				<td>{{invitation.email}}</td>
+				<td>
+					<button class="btn btn-sm btn-danger" {{action 'deleteInvitation' invitation }}>delete</button>
+				</td>
 			</tr>
 		{{/each}}
 	</tbody>
 </table>
+
+{{#if responseMessage}}
+	<div class="alert alert-success">{{responseMessage}}</div>
+{{/if}}

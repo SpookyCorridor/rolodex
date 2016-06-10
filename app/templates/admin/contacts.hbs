@@ -1,6 +1,7 @@
-<h2>Libraries</h2>
+<h2>Contacts</h2>
 
 <table class="table table-bordered table-striped">
+	{{#each model as |contact| }}
 	<thead>
 		<tr>
 			<th>id</th>
@@ -9,12 +10,16 @@
 		</tr>
 	</thead>
 	<tbody>
-		{{#each model as |contact| }}
 			<tr>
                 <th>{{contact.id}}</th>
 				<th>{{contact.email}}</th>
 				<td>{{contact.message}}</td>
 			</tr>
+	</tbody> 
+	<button class="btn btn-danger" {{action 'deleteContact' contact}}>delete</button>
 		{{/each}}
-	</tbody>
 </table>
+
+{{#if responseMessage}}
+	<div class="alert alert-success">{{responseMessage}}</div>
+{{/if}}

@@ -9,25 +9,11 @@ export default Ember.Route.extend({
     actions: {
         sendMessage(newMessage) {
             newMessage.save()
-                .then(r => console.log(r))
+                .then(()=>{
+                    this.controller.set('responseMessage', "we've got your message, thanks!"); 
+                    this.controller.get('model').rollbackAttributes(); 
+                })
                 .catch(e => console.log(e));
         },
-        
-        willTransition() {
-            this.controller.get('model').rollbackAttributes(); 
-        }
-    }
-    
-    /*
-      
-    
-    actions: {
-        sendMessage() {
-            this.set('responseMessage', `we've got your message, thanks!`); 
-            this.setProperties({
-                emailAddress: '',
-                message: ''   
-            }); 
-        }, 
-    } */ 
+    }     
 });
